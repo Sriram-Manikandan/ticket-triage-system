@@ -154,7 +154,7 @@ function createRateLimiter(maxRequests, windowMs) {
 
 **Request**
 - Endpoint: `https://api.groq.com/openai/v1/chat/completions`
-- Model: `GROQ_MODEL` from env (default `llama-3.3-70b-versatile`)
+- Model: `GROQ_MODEL` from env (default `openai/gpt-oss-20b`)
 - `temperature: 0` for consistent answers
 - `response_format: { type: "json_object" }` (JSON mode)
 - Header: `Authorization: Bearer <GROQ_API_KEY>`
