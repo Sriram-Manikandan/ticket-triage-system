@@ -1,0 +1,84 @@
+:root {
+  --paper: #f5f7fa;
+  --ink: #1b2430;
+  --muted: #5b6776;
+  --line: #d9e0e8;
+  --accent: #1f6f78;
+  --high: #b3261e;
+  --medium: #a15c00;
+  --low: #2e6b3a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Segoe UI", system-ui, sans-serif;
+  line-height: 1.5;
+}
+
+.top {
+  background: var(--ink);
+  color: #fff;
+  padding: 1.5rem 1rem;
+  text-align: center;
+}
+.top h1 { margin: 0 0 0.25rem; font-size: 1.75rem; }
+.top p { margin: 0; color: #c3ccd8; }
+
+main { max-width: 960px; margin: 1.5rem auto; padding: 0 1rem; display: grid; gap: 1.25rem; }
+
+.panel {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+.panel h2 { margin: 0 0 1rem; font-size: 1.15rem; }
+
+label { display: block; margin: 0.75rem 0 0.25rem; font-weight: 600; font-size: 0.9rem; }
+input, textarea {
+  width: 100%;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font: inherit;
+}
+input:focus, textarea:focus, button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+button {
+  margin-top: 1rem;
+  padding: 0.6rem 1.25rem;
+  border: 0;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+button:disabled { opacity: 0.6; cursor: wait; }
+
+#message { margin: 0.75rem 0 0; min-height: 1.5rem; }
+#message.error { color: var(--high); }
+#message.ok { color: var(--low); }
+
+.stats { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.stat { border: 1px solid var(--line); border-radius: 6px; padding: 0.4rem 0.8rem; }
+.stat strong { margin-left: 0.4rem; color: var(--accent); }
+
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+th, td { text-align: left; padding: 0.6rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { color: var(--muted); font-weight: 600; }
+
+.priority { font-weight: 700; }
+.priority.High { color: var(--high); }
+.priority.Medium { color: var(--medium); }
+.priority.Low { color: var(--low); }
+.uncategorised { color: var(--muted); font-style: italic; }

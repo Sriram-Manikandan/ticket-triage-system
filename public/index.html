@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Smart Ticket Triage</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <h1>Smart Ticket Triage</h1>
+    <p>Describe your problem. AI sorts it into a category and priority.</p>
+  </header>
+
+  <main>
+    <section class="panel">
+      <h2>Submit a ticket</h2>
+      <form id="ticket-form">
+        <label for="name">Your name</label>
+        <input id="name" type="text" maxlength="100" required>
+
+        <label for="title">Title</label>
+        <input id="title" type="text" maxlength="200" required>
+
+        <label for="description">Description</label>
+        <textarea id="description" rows="5" maxlength="2000" required></textarea>
+
+        <button id="submit-btn" type="submit">Submit ticket</button>
+        <p id="message" role="status"></p>
+      </form>
+    </section>
+
+    <section class="panel">
+      <h2>Tickets per category</h2>
+      <div id="stats" class="stats"></div>
+    </section>
+
+    <section class="panel">
+      <h2>All tickets</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th><th>User</th><th>Title</th><th>Category</th><th>Priority</th><th>AI summary</th>
+            </tr>
+          </thead>
+          <tbody id="ticket-rows"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
