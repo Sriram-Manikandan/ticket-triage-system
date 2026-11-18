@@ -32,7 +32,7 @@ async function triageTicket(title, description) {
       Authorization: `Bearer ${process.env.GROQ_API_KEY}` // secret read from env
     },
     body: JSON.stringify({
-      model: process.env.GROQ_MODEL || 'llama-3.3-70b-versatile',
+      model: process.env.GROQ_MODEL || 'openai/gpt-oss-20b',
       temperature: 0,                              // consistent, repeatable answers
       response_format: { type: 'json_object' },    // structured output: JSON mode
       messages: [
@@ -43,6 +43,16 @@ async function triageTicket(title, description) {
   });
 
   if (!response.ok) {
+    let providerMessage = '';
+    try {
+      const body = await response.json();
+      if (body.error && typeof body.error.message === 'string') {
+        providerMessage = body.error.message.replace(/\s+/g, ' ').slice(0, 300);
+      }
+    } catch (parseError) {
+      console.error(`Groq returned a non-JSON error response (HTTP ${response.status}).`);
+    }
+    console.error(`Groq API request failed (HTTP ${response.status})${providerMessage ? `: ${providerMessage}` : ''}`);
     const err = new Error('The AI service failed. Please try again.');
     err.status = 502;
     throw err;
